@@ -1,9 +1,9 @@
 # dropwitch-code-generator
 
-dropwitch-code-generator is a __Java code generator__.
+Java code generator, from existing MySQL tables to MySQL Schema, Entity and DAO
 
-- Reverse engineering existing MySQL tables
-- Generate MySQL Schema, Entity and DAO
+- Reverse engineering existing MySQL tables into MySQL schema file (`fab generate.schema`)
+- Generate Entity and DAO codes from MySQL schema file (`fab generate.entities`)
 
 This generator is powered by [Python Fabric](http://www.fabfile.org/)
 
