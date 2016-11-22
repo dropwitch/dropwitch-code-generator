@@ -18,6 +18,12 @@ This generator is powered by [Python Fabric](http://www.fabfile.org/)
 
 ## Usage
 
+Clone this repo:
+
+```
+git clone git@github.com:dropwitch/dropwitch-code-generator.git
+```
+
 Edit `env` in fabfile/\__init\__.py:
 
 ```
