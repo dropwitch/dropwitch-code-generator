@@ -12,12 +12,14 @@ from Class import *
 
 FAB_DIR = os.path.abspath(os.path.dirname(__file__))
 PROJECT_DIR = os.path.normpath(FAB_DIR + "/../")
-SCHEMA_SQL_DIR = os.path.join(PROJECT_DIR, "src/main/resources/db/")
-SCHEMA_SQL_PATH = os.path.join(SCHEMA_SQL_DIR, "schema.sql")
+SCHEMA_SQL_DIR = ''
+SCHEMA_SQL_PATH = ''
 
 
 @task
 def schema():
+    _set_schema_dir()
+
     # Create output dir if not exists
     local("[ -d {0} ] || mkdir -p {0}".format(SCHEMA_SQL_DIR))
 
@@ -33,10 +35,18 @@ def schema():
 
 @task
 def entities():
+    _set_schema_dir()
     tables = _parse_sql()
     _print_tables(tables)
     _tables_to_files(tables)
     print green("Java files have been generated!")
+
+
+def _set_schema_dir():
+    global SCHEMA_SQL_DIR
+    global SCHEMA_SQL_PATH
+    SCHEMA_SQL_DIR = os.path.join(PROJECT_DIR, env.schema_sql_dir)
+    SCHEMA_SQL_PATH = os.path.join(SCHEMA_SQL_DIR, "schema.sql")
 
 
 def _parse_sql():
